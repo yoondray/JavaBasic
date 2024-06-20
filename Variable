@@ -3,9 +3,28 @@ Public class Variable {
     public static void main(String[] args) {
         int num1 = 10;
         int num2 = 20;
-        int sum = num1 + num2;
+        int sum1 = num1 + num2;
 
         System.out.println(sum);
 
+        int sum2 = 3 + 1 * 7;
+        int sum3 = (3+1) * 7;
+
+        System.out.println(sum2);
+        System.out.println(sum3);
+
+        //증감연산자
+        int a = 0;
+        a = a+1;
+        System.out.println("a= " + a); //1
+
+        a = a+1;
+        System.out.println("a= " + a); //2
+
+        a = a+1;
+        System.out.println("a= " + a); //3
+
+        a = a+1;
+        System.out.println("a= " + a); //4
     }
 }
