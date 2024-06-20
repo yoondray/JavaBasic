@@ -29,5 +29,25 @@ Public class Variable {
 
         --a;
         System.out.println("a= "+ a); //3
+
+        int c = 1;
+        int d = 0;
+
+        d = ++c; //c값을 먼저 증가시키고 d에 대입 c=2 d=2
+        // c = c+1; 
+        // d = c;
+        System.out.println("c= "+ c + " d= "+ d);
+
+        c = 1;
+        d = 0;
+
+        d = c++; //c깂을 d에 먼저 대입하고 증가 c=2 d=1
+        // d = c;
+        // c = c+1;
+        System.out.println("c= "+ c + " d= "+ d);;
+
+        ++c;
+        c++;
+        // 증감연산자를 단독 사용할 경우, 다른 연산이 없기때문에 본인만 증가한다. 그러므로 두 연산자의 값은 같다.
     }
 }
