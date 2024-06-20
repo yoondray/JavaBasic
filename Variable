@@ -21,10 +21,13 @@ Public class Variable {
         a = a+1;
         System.out.println("a= " + a); //2
 
-        a = a+1;
+        ++a;
         System.out.println("a= " + a); //3
 
-        a = a+1;
-        System.out.println("a= " + a); //4
+        ++a;
+        System.out.println("a= "+ a); //4
+
+        --a;
+        System.out.println("a= "+ a); //3
     }
 }
