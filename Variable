@@ -52,6 +52,7 @@ Public class Variable {
 
 
         //비교연산자
+        boolean result = c == d
         
     }
 
