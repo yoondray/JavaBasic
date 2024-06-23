@@ -1,0 +1,31 @@
+public class Logical {
+
+    public static void main(String[] args) {
+        
+        int a = 15;
+        //a는 10보다 크고 20보다 작다
+        boolean result = a> 10 && a<20; //(a>10) && (a<20)
+        System.out.println("result ="+ result);
+
+        boolean easyResult = 10<a && a<20;
+        System.out.println("easyResult ="+ easyResult);
+
+
+        //대입연산자(변수에 값을 할당하는 연산자)
+        int b = 10;
+
+        //축약(복합) 대입연산자
+        //(+=, -=, *=, /=, %=)
+        int i = 5;
+        i= i + 3;    //i += 3
+        //8
+        System.out.println(i);
+
+        i -= 2 ;    //i = 6
+        i *= 4;     //i = 24
+        i /= 3;     //i = 8
+        i %= 5;
+        System.out.println(i);    //i = 3 (8%5의 나머지)
+
+    }
+}
