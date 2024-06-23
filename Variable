@@ -52,8 +52,55 @@ Public class Variable {
 
 
         //비교연산자
-        boolean result = c == d
-        
+        System.out.println(c == d);
+        System.out.println(c > d);
+        System.out.println(c < d);
+        System.out.println(c != d);
+        System.out.println(c >= d );
+        System.out.println(c <= d);
+
+        boolean result = c==d;
+        System.out.println(result);
+
+         //문자열 비교
+        String str1 = "문자열 1";
+        String str2 = "문자열 2";
+
+        boolean result2 = str1.equals(str2);
+        System.out.println(result2);
+
+        //리터럴 비교
+        boolean result3 = "hello".equals("hello");
+        System.out.println(result3);
+
+        //문자열변수 리터럴 비교
+        boolean result4 = str1.equals("hello");
+        System.out.println(result4);
+
+
+        //논리연산자(&&-둘다 참, ||-둘중 하나라도 참, !-부정)
+        System.out.println("&&: AND 연산");
+        System.out.println(true && true);   //true
+        System.out.println(true && false);  //false
+        System.out.println(false && false); //false
+
+        System.out.println("||: OR 연산");
+        System.out.println(true || true);   //true
+        System.out.println(true || false);  //true
+        System.out.println(false || false); //false
+
+        System.out.println("! 연산");
+        System.out.println(!true);   //false
+        System.out.println(!false);  //true
+
+        System.out.println("변수활용");
+        boolean e = true;
+        boolean f = false;
+        System.out.println(e && f); //false
+        System.out.println(e || f); //true
+        System.out.println(!e);     //false
+        System.out.println(!f);     //true
+    
     }
 
 }
