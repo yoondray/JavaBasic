@@ -1,0 +1,79 @@
+public class OperationEx1 {
+
+    public static void main(String[] args) {
+
+        int score = 70;
+        String grade;
+
+        if(score >= 90) {
+            grade = "A";
+        }else if(score >= 80 && score <90) {
+            grade = "B";
+        }else if(score >= 70 && score <80) {
+            grade = "C";
+        }else {
+            grade = "F";
+        }
+        System.out.println("grade 는 " + grade + "입니다.");
+
+
+        int distance = 7;
+        if(distance <= 1) {
+            System.out.println("도보를 이용하세요.");
+        }else if(distance <= 10) {
+            System.out.println("자전거를 이용하세요.");
+        }else if(distance <= 100) {
+            System.out.println("자동자를 이용하세요.");
+        }else {
+            System.out.println("이용수단이 없습니다.");
+        }
+
+
+        int pound = 2;
+        if(pound < 0) {
+            System.out.println("잘못된 금액입니다.");
+        }else if(pound == 0) {
+            System.out.println("환전할 금액이 없습니다.");
+        }else {
+            int krw = pound * 1700;
+            System.out.println("환전금액은 "+ krw + "원 입니다.");
+        }
+
+
+        double rating = 4.5;
+        if(rating <= 9) {
+            System.out.println("어바웃 타임");
+        }if(rating <= 8) {
+            System.out.println("토이스토리");
+        }if(rating <= 5) {
+            System.out.println("범죄도시");
+        }
+
+
+        String newGrade = "C";
+        switch (newGrade) {
+            case "A":
+                System.out.println("Excellent!");
+                break;
+            case "B":
+                System.out.println("GOOD");
+                break;
+            case "F":
+                System.out.println("FAILED");
+                break;
+            default:
+                System.out.println("NOT BAD");
+        }
+
+        //더 큰 숫자 찾기
+        int a = 10;
+        int b = 20;
+        int max = (a>b) ? a: b;
+        System.out.println("a 그리고 b 중에서 더 큰 숫자는 " + max + "입니다.");
+
+
+        int x = 2;
+        String result = (x%2 == 0) ? "짝수" : "홀수";
+        System.out.println("결과는 " + result + "입니다.");
+    }
+}
