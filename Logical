@@ -27,5 +27,7 @@ public class Logical {
         i %= 5;
         System.out.println(i);    //i = 3 (8%5의 나머지)
 
+        int age = 17;
+
     }
 }
