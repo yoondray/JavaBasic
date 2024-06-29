@@ -96,7 +96,6 @@ public class While_1 {
 
         }
 
-
         sum = sum + j;
         j++;
         System.out.println("j = "+ j + "sum = " + sum); //10
