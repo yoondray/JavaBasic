@@ -108,5 +108,7 @@ public class While_1 {
         j++;
         System.out.println("j = "+ j + "sum = " + sum); //33
 
+
+        //for문
     }
 }
