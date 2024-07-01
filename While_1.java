@@ -110,5 +110,6 @@ public class While_1 {
 
 
         //for문
+        // ㅠㅠ 완전 망햇어ㅜㅠ
     }
 }
