@@ -1,0 +1,76 @@
+public class whileForTest {
+    public static void main(String[] args) {
+
+        //중첩 for문
+        for(int i=0; i< 2; i++) {
+            System.out.println("외부 for 시작 i: " + i);
+            for(int j=0; j< 3; j++) {
+                System.out.println("내부 for " +i + "-" + j);
+            }
+            System.out.println("외부 for 종료 i: " + i);
+            System.out.println();
+        }
+
+        int count = 1;
+        while (count <= 10) {
+            System.out.println(count);
+            count++;
+        }
+
+        for (int sum = 1; sum <= 10; sum++) {
+            System.out.println(sum);
+        }
+
+        int num = 2;
+        while (count <= 10) {
+            System.out.println(num);
+            num += 2;
+            count ++;
+        }
+
+//        for (int no = 2, cnt = 1; cnt <= 10; cnt++) {
+            int no = 2;
+            for(int cnt = 1; cnt <= 10; cnt++) {
+                System.out.println(no);
+            }
+
+            //누적합 계산
+            int max = 100;
+            int total = 0;
+            int x = 1;
+            while (x < max) {
+                total += x;
+                x++;
+            }
+        System.out.println(total);
+
+        for(int y=1; y <= max; y++) {
+            total += y;
+        }
+        System.out.println(total);
+
+
+        //중첩 for를 사용해서 구구단을 출력한다.
+        for(int a =1; a<= 9; a++) {
+            for(int b=1; b<=9; b++) {
+                System.out.println(a + " * " + b +  " = " + a*b);
+            }
+        }
+
+        //int rows 선언하기
+        int rows = 3;
+
+        for(int r=1; r<=rows; r++) {
+            for(int c=1; c<=r; c++) {
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+
+        System.out.print("*");
+        System.out.println();
+        System.out.print("*");
+        System.out.print("*");
+        System.out.println();
+    }
+}
