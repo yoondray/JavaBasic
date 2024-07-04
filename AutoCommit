@@ -1,1 +1,41 @@
-//for문을 위한 auto commit;
+public class forTest{
+  public static void main(String[] args) {
+
+        for(int i=1; i<= 10; i++) {
+            System.out.println(i);
+        }
+
+        int sum = 0;
+        int endNum = 3;
+
+        for(int i=1; i<= endNum; i++) {
+            sum = sum + i;
+            System.out.println("i= "+i+" sum= "+sum);
+        }
+
+        //for vs while
+        int i=1; //카운터 변수
+
+        while(i <= endNum) {
+            sum = sum + i;
+            System.out.println("i= "+i+" sum= "+sum);
+            i++;
+        }
+
+        //반복횟수에 직접적인 영향을 주는 변수를 선언, 값 증가, 조건식에 활용할 수 있다.
+        //ex) for (초기식; 조건식; 증감식;)
+        for(; ;) {
+            sum += i;
+            if(sum >10) {
+                System.out.println("합이 10보다 크면 종료: i= " + i + " sum= " + sum);
+                break;
+            }
+            i++;
+        }
+
+        //위 코드를 변경가능함
+        for(int j=1; ;j++) {
+            sum += j;
+        }
+    }
+}
