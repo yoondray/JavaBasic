@@ -38,5 +38,10 @@ public class Type {
         //명시적 형변환
         iValue = (int) dValue;
         System.out.println("iValue = " + iValue); //1
+
+        //대입연산자(=)으로 직접 대입할때만 형변환된다.
+        int y = (int) 10.5;
+        System.out.println(y); //10
+
     }
 }
