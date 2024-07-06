@@ -1,1 +1,15 @@
-commit
+public class Scope {
+    public static void main(String[] args) {
+
+        int m = 10; //생존시작
+
+        if (true) {
+            int x = 10; //생존시작
+            System.out.println("m = " + m);
+            System.out.println("x = " + x);
+        } //x 생존 종료
+
+        System.out.println("m = " + m);
+//    System.out.println("x = " + x);
+    }
+}
