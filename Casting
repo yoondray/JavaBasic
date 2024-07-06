@@ -22,5 +22,21 @@ public class Type {
 
         doubleValue = 2000000L;
         System.out.println("doubleValue2 = " + doubleValue);
+
+
+        //명시적 형변환
+        double dValue = 1.5;
+        int iValue = 0;
+
+        //컴파일 오류 발생
+        //java: incompatible types : possible lossy conversion from double to int
+        //java: 호환되지 않는 유형 : double에서 int로의 가능한 손실 변환 (.5가 사라진다.)
+
+        //컴파일 오류는 문제를 가장 빨리 발견할 수 있는 오류이다.
+
+        //iValue = dValue;
+        //명시적 형변환
+        iValue = (int) dValue;
+        System.out.println("iValue = " + iValue); //1
     }
 }
