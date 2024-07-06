@@ -1,6 +1,6 @@
 public class Scope {
     public static void main(String[] args) {
-
+    //지역변수는 본인의 코드 블록 안에서만 생존 가능함
         int m = 10; //생존시작
 
         if (true) {
@@ -12,4 +12,27 @@ public class Scope {
         System.out.println("m = " + m);
 //    System.out.println("x = " + x);
     }
+
+        //for문의 초기식 int i = 0; 처럼 변수를 직접 선언할 수 있다.
+        for(int i = 0; i < 2; i++) {
+            System.out.println("m = " + m);
+            System.out.println("i = " + i);
+        }
+
+        System.out.println("m = " + m);
+//    System.out.println("i = " + i);
+
+        //scope가 존재하는 이유는?
+        //그러나 temp를 전역변수로 선언하면
+        // 1.비효율적인 메모리 사용 - main() 코드블록이 종료될 때 까지 메모리에 유지한다.
+        // 2.코드 복잡성 증가의 문제가 있다. - if구문이 끝나도 temp를 어디서나 접근할 수 있다.(temp를 계속 고려해야한다.)
+        // int temp = 0;
+
+        if(m > 0) {
+            //temp는 if문 안에서만 사용한다.
+            int temp = m * 2;
+            System.out.println("temp = " + temp);
+        }
+        System.out.println("m = " + m);
+
 }
