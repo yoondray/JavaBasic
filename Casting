@@ -1,0 +1,26 @@
+public class Type {
+    public static void main(String[] args) {
+        //작은 범위에서 큰 범위 대입은 허용한다.
+        //int < long <double
+
+        //같은 타입에 값을 대입할 수 있다.
+
+        int intValue = 10;
+        long longValue;
+        double doubleValue;
+
+        //자동 형변환, 묵시적 형변환
+        doubleValue = intValue;
+        doubleValue = (double) intValue;
+        doubleValue = (double) 10;
+        doubleValue = 10.0;
+
+        System.out.println("doubleValue = " + doubleValue);
+
+        longValue = intValue;
+        System.out.println("longValue = " + longValue);
+
+        doubleValue = 2000000L;
+        System.out.println("doubleValue2 = " + doubleValue);
+    }
+}
