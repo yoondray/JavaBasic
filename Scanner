@@ -1,0 +1,9 @@
+public class Scanner {
+
+    public static void main(String[] args) {
+        //Scanner
+
+        // System.out을 통해서 출력을 했듯이 System.in을 통해 사용자의 입력을 받을 수 있음
+    }
+}
+
