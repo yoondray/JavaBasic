@@ -53,5 +53,23 @@ public class Type {
         //오버플로우가 발생하는 것 자체가 문제이다. - 오버플로우가 발생하지 않도록 해야한다.
         //발생했다면 int > long으로 바꾼다.
 
+
+        int div1 = 3/2;             // 1
+        double div2 = 3/2;          //1.0
+        double div3 = 3.0/2;        //1.5
+        double div4 = (double) 3/2; //1.5
+
+        int a = 3;
+        int b = 2;
+
+        double result = (double) a/b;
+        System.out.println("result = " + result);
+
+        //1.같은 타입끼리 연산은 같은 타입의 결과를 낸다.
+        //int + int = int / double + double = double
+
+        //2.서로 다른 타입의 계산은 큰 범위로 자동 형변환이 일어난다.
+        //int + long = long + long / int + double = double + double
+
     }
 }
