@@ -1,0 +1,7 @@
+        request.getRejectList().forEach(item -> {
+            HospitalReservationAttachedPaper modifiedPaper = paperRepository.findByHospitalReservationAndId(modifiedHospitalReservation, item.getId())
+                    .orElseThrow(() -> new BusinessException("첨부서류에 해당 청구번호가 없습니다."));
+            modifiedPaper.changeReject(true);
+        });
+
+//어려웠다.
