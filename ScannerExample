@@ -78,5 +78,48 @@ public class ScannerExample {
 
             System.out.println("입력한 이름: "+ name + ", 나이: " + age);
         }
+
+        while (true) {
+            System.out.println("상품의 가격을 입력하세요 (-1를 입력하면 종료): ");
+            int price = input.nextInt();
+
+            if(price == -1) {
+                System.out.println("프로그램을 종료합니다.");
+                break;
+            }
+
+            System.out.println("구매하려는 수량을 입력하세요: ");
+            int quantity = input.nextInt();
+
+            int totalCost = price * quantity;
+            System.out.println("총 비용은 " + totalCost + "입니다.");
+        }
+
+        int sum = 0;
+        int count = 0;
+        int input = 0;
+
+        System.out.println("숫자를 입력하세요. 입력을 중단하려면 -1를 입력하세요.");
+        while(true) {
+            input = scanner.nextInt();
+            if(input == -1) {
+                break;
+            }
+            sum += input;
+            count ++;
+        }
+
+        double average = (dount) sum / count;
+        System.out.println("합계 "+ sum);
+        System.out.println("평균 "+ average);
+
+        while(input = scanner.nextInt() != -1) {
+            sum += input;
+            count++;
+        }
+
+        double average = (dount) sum / count;
+        System.out.println("합계 "+ sum);
+        System.out.println("평균 "+ average);
     }
 }
