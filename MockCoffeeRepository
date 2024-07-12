@@ -1,0 +1,14 @@
+public class MockCoffeeRepository extends CoffeeRepository {
+
+  @Override
+  public Coffee findOne(String name) {
+
+    if(name.equals("lattee")) {
+      return Coffee.builder().name("lattee").price(4000).isMilk(true).build();
+    } else if(name.equals("americano")) {
+      return Coffee.builder().name("americano").price(3500).isMilk(false).build();
+    }
+
+    return null;
+  }
+}
