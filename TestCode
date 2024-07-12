@@ -1,48 +1,48 @@
 package com.lulumedic.marketing.event.service;
 
-import com.lulumedic.api.marketing.domain.Event;
-import com.lulumedic.api.marketing.dto.event.EventQueryResponse;
-import com.lulumedic.api.marketing.repository.event.EventRepository;
-import com.lulumedic.api.marketing.service.event.EventReadService;
+import com.lulumedic.api.marketing.domain.Coffee;
+import com.lulumedic.api.marketing.repository.CoffeeRepository;
+import com.lulumedic.api.marketing.service.CoffeeService;
+
 import org.instancio.Instancio;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.extension.ExtendWith;
+
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import java.util.Optional;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import static org.instancio.Select.field;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(SpringExtension.class)
-public class EventReadServiceTest {
+public class CoffeePriceCalculationServiceTest {
 
     @Mock
-    EventRepository eventRepository;
+    CoffeeRepository coffeeRepository;
 
     @InjectMocks
-    EventReadService eventReadService;
+    CoffeeService coffeeService;
 
     @Test
-    @DisplayName("이벤트 단건 조회 테스트")
-    public void getTest() {
-        //given
-        Long id = 3L;
+    @DisplayName("우유가 들어있지 않은 커피의 할인가격을 검증")
+    public void When_Get_Discount_Expect_Minus_100() {
 
-        Event event = Instancio.of(Event.class)
-                .set(field(Event::getId), id)
-                .create();
+      //given
+      String name = "americano";
+      int defaultPrice = 1000;
+      int expectedPrice = 900;
 
-        when(eventRepository.findById(id)).thenReturn(Optional.ofNullable(event));
-
-        //when
-        EventQueryResponse response = eventReadService.getDetailEvent(id);
-
-        assertEquals(EventQueryResponse.class, response.getClass());
-        assertEquals(id, response.getId());
+      when(coffeeRepository.findOne(name)
+              .thenReturn(Coffee.builder().name(name).isMilk(false).price(defaultPrice)))
+      
+      //when
+      int actualPrice = coffeeService.getDiscountedPrice(name);
+      
+      //then
+      assertEquals(expectedPrice, actualPrice);
     }
 }
