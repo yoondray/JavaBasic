@@ -1,0 +1,48 @@
+package com.lulumedic.marketing.event.service;
+
+import com.lulumedic.api.marketing.domain.Event;
+import com.lulumedic.api.marketing.dto.event.EventQueryResponse;
+import com.lulumedic.api.marketing.repository.event.EventRepository;
+import com.lulumedic.api.marketing.service.event.EventReadService;
+import org.instancio.Instancio;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+
+import java.util.Optional;
+
+import static org.instancio.Select.field;
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.when;
+
+@ExtendWith(SpringExtension.class)
+public class EventReadServiceTest {
+
+    @Mock
+    EventRepository eventRepository;
+
+    @InjectMocks
+    EventReadService eventReadService;
+
+    @Test
+    @DisplayName("이벤트 단건 조회 테스트")
+    public void getTest() {
+        //given
+        Long id = 3L;
+
+        Event event = Instancio.of(Event.class)
+                .set(field(Event::getId), id)
+                .create();
+
+        when(eventRepository.findById(id)).thenReturn(Optional.ofNullable(event));
+
+        //when
+        EventQueryResponse response = eventReadService.getDetailEvent(id);
+
+        assertEquals(EventQueryResponse.class, response.getClass());
+        assertEquals(id, response.getId());
+    }
+}
