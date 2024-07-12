@@ -24,25 +24,29 @@ public class CoffeePriceCalculationServiceTest {
     @Mock
     CoffeeRepository coffeeRepository;
 
+    //Mocking작업
+    public class MockCoffeeRepository extends CoffeeRepository{...}
+
     @InjectMocks
     CoffeeService coffeeService;
 
     @Test
-    @DisplayName("우유가 들어있지 않은 커피의 할인가격을 검증")
     public void When_Get_Discount_Expect_Minus_100() {
+
+      CoffeeService coffeeService = new CoffeeService(new MockCoffeeRepository());
 
       //given
       String name = "americano";
       int defaultPrice = 1000;
       int expectedPrice = 900;
-
       when(coffeeRepository.findOne(name)
               .thenReturn(Coffee.builder().name(name).isMilk(false).price(defaultPrice)))
-      
+
       //when
       int actualPrice = coffeeService.getDiscountedPrice(name);
-      
+
       //then
       assertEquals(expectedPrice, actualPrice);
+
     }
 }
