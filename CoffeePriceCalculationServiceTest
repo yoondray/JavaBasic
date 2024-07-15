@@ -1,8 +1,8 @@
-package com.lulumedic.marketing.event.service;
+package com.coffee.marketing.service;
 
-import com.lulumedic.api.marketing.domain.Coffee;
-import com.lulumedic.api.marketing.repository.CoffeeRepository;
-import com.lulumedic.api.marketing.service.CoffeeService;
+import com.coffee.api.marketing.domain.Coffee;
+import com.coffee.api.marketing.repository.CoffeeRepository;
+import com.coffee.api.marketing.service.CoffeeService;
 
 import org.instancio.Instancio;
 import org.junit.jupiter.api.Test;
