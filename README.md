@@ -38,14 +38,4 @@
 <br/>
     (접근방법) 가짜로 구현하기. 삼각측량법(여러 테스트를 작성하고, 일반화함). 명백하게 구현하기
 
-----------------------------------------------------------
-@Mock @InjectMocks @MockBean
-
-Q) Mock 객체는 왜 필요한가? Service Layer에 Repository가 주입된다.  
-<br/>
-만약, CoffeeService의 getDiscountedPrice(커피의 할인가격을 조회하는 기능)을 단위테스트 하는 경우에, @Repository에 대한 의존성은 어떻게 처리하면 좋을까?
-<br/>
--> 이런 경우, Mock 객체를 생성해서 Repository를 임의로 조작하는 방법을 주로 사용한다. (Mocking)
-
-
 
