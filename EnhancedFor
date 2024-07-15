@@ -1,0 +1,15 @@
+public class EnhancedFor {
+    public static void main(String[] args) {
+        int[] numbers = {1,2,3,4,5};
+
+        //forEach 사용하지 못하는 경우, 증가하는 index값이 필요할 때
+        for(int i=0;i<numbers.length;i++) {
+            int number = numbers[i];
+            System.out.println("number" + i + "번의 결과는 " + number);
+        }
+
+        for(int number:numbers) {
+            System.out.println(number);
+        }
+    }
+}
