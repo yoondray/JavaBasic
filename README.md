@@ -41,9 +41,8 @@
 ----------------------------------------------------------
 @Mock @InjectMocks @MockBean
 
-Q) Mock 객체는 왜 필요한가?
-
-Service Layer에 Repository가 주입된다.  
+Q) Mock 객체는 왜 필요한가? Service Layer에 Repository가 주입된다.  
+<br/>
 만약, CoffeeService의 getDiscountedPrice(커피의 할인가격을 조회하는 기능)을 단위테스트 하는 경우에, 
 <br/>
 @Repository에 대한 의존성은 어떻게 처리하면 좋을까?
