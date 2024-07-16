@@ -1,0 +1,12 @@
+@SpringBootTest
+public class CoffeeServiceTests {
+ 
+    @Autowired
+    CoffeeService coffeeService;
+ 
+    @Test
+    void transactionalEventListener_throw_notPropagate() {
+        assertDoesNotThrow(() -> coffeeService.throwError(ErrorType.TRANSACTIONAL_EVENT_LISTENER));
+    }
+ 
+}
