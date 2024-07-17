@@ -1,0 +1,11 @@
+@Getter
+@RequiredArgsConstructor
+public enum MenuHistoryType {
+    EVENT_LISTENER("동기이벤트 리스너"),
+    TRANSACTIONAL_EVENT_LISTENER("트랜잭션 범위에 따라 실행되는 동기이벤트 리스너"),
+    ASYNC_EVENT_LISTENER("비동기이벤트 리스너"),
+    ASYNC_TRANSACTIONAL_EVENT_LISTENER("트랜잭션 범위에 따라 실행되는 비동기이벤트 리스너");
+
+    private final String name;
+
+}
