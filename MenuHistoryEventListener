@@ -1,0 +1,19 @@
+@Component
+@Slf4j
+@RequiredArgsConstructor
+
+public class MenuHistoryEventListener {
+
+    private final EmailRepository emailRepository;
+
+    @Async
+    @EventListener
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    public void sendEmailEventListener(EmailEvent event) {
+
+        emailRepository.save(EmailHistory.builder()
+              .id(event.getCustomerId()
+              .email(event.getEmail())
+              .build());
+    }
+}
