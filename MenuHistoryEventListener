@@ -16,4 +16,13 @@ public class MenuHistoryEventListener {
               .email(event.getEmail())
               .build());
     }
+
+    @Async("customExecutor")
+    @TransactionalEventListener
+    public void handleTransactionEvent(HospitalReservationHistoryEvent event) {
+
+        if(HospitalReservationHistoryType.ASYNC_TRANSACTIONAL_EVENT_LISTENER.equals(event.getType())) {
+            throw new BusinessException("이벤트리스너 즉, 로그는 쌓이지 않습니다.");
+        }
+    }
 }
