@@ -1,0 +1,40 @@
+import com.lulumedic.core.exception.BusinessException;
+import com.lulumedic.core.type.HospitalReservationHistoryType;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.event.EventListener;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.event.TransactionalEventListener;
+
+@Component
+@Slf4j
+@RequiredArgsConstructor
+
+public class HospitalReservationHistoryEventListener {
+
+    private final CoffeeHistoryRepository coffeeHistoryRepository;
+
+    @Async
+    @EventListener
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    public void onHistoryEventListener(HospitalReservationHistoryEvent event) {
+
+        coffeeHistoryRepository.save(CoffeeHistory.builder()
+              .menuId(event.getMenuId())
+              .status(event.getStatus())
+              .memo(event.getMemo())
+              .build());
+    }
+
+    @Async("customExecutor")
+    @TransactionalEventListener
+    public void handleTransactionEvent(HospitalReservationHistoryEvent event) {
+
+        if(MenuHistoryType.ASYNC_TRANSACTIONAL_EVENT_LISTENER.equals(event.getType())) {
+            throw new BusinessException("이벤트리스너 즉, 로그는 쌓이지 않습니다.");
+        }
+    }
+}
