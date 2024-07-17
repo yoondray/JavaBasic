@@ -1,0 +1,38 @@
+import com.lulumedic.core.exception.BusinessException;
+import com.lulumedic.core.type.HospitalReservationType;
+import com.lulumedic.core.type.ResponseMessage;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+@Slf4j
+@Service
+@RequiredArgsConstructor
+public class CoffeeSaveService {
+
+    private final CoffeeRepository repository;
+
+    private final MenuHistoryEventPublisher menuHistoryEventPublisher;
+
+    @Transactional
+    public void saveCustomer(CustomerDto request) {
+
+      Customer saveCustomer = repository.save();
+      repository.findById(saveCustomer.getId());
+      MenuHistoryEvent event = MenuHistoryEvent.sendEmail(saveCustomer.getId(), request.getEmail());
+
+        try{
+            log.info("===== 이벤트 발행 메서드 호출 =====");
+            Thread.sleep(3000);
+
+            MenuHistoryEventPublisher.sendEmail(event);
+            log.info("===== 이벤트 발행 메서드 종료 =====");
+
+        }catch (Exception e) {
+            if(false) {
+                log.debug("이벤트 리스너 오류");
+            }
+        }
+    }
+}
