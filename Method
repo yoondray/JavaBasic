@@ -7,7 +7,12 @@ public class Method {
         System.out.println("4. changeNum 호출 후 = " + num1);
 
         changeNum(num1);
-        changeNum(5);
+        //changeNum(5);
+
+        changeInt(num1);
+        System.out.println("5. num1에 값 복사 전 = " + num1);
+        num1 = changeInt(num1);
+        System.out.println("6. changeInt 호출 후 = " + num1);
 
     }
 
@@ -17,5 +22,10 @@ public class Method {
         num2 = num2 * 2;
         System.out.println("3. num2값 변경 후 = " + num2);
         num2 = 10;
+    }
+
+    public static int changeInt(int number) {
+        number = number * 2;
+        return number;
     }
 }
