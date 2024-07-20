@@ -1,5 +1,5 @@
 public class Method {
-    //변수의 값을 복사해서 전달함
+    //변수의 값을 복사해서 전달함 => Java는 num2의 값을 바꾸더라도 num1의 값은 바뀌지 않는다.
     public static void main(String[] args) {
         int num1 = 5;
         System.out.println("1. changeNum 호출 전 = " + num1);
