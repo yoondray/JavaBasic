@@ -1,0 +1,44 @@
+import com.lulumedic.api.claim.domain.HospitalReservation;
+import com.lulumedic.api.claim.repository.HospitalReservationRepository;
+import com.lulumedic.config.DBConfig;
+import com.lulumedic.config.JpaConfig;
+import com.lulumedic.config.QueryDSLConfig;
+import com.lulumedic.core.exception.BusinessException;
+import com.lulumedic.core.type.ResponseMessage;
+import com.lulumedic.core.util.CryptoUtil;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.context.annotation.Import;
+import org.springframework.test.annotation.Rollback;
+
+@DataJpaTest
+@Import({JpaConfig.class, DBConfig.class, QueryDSLConfig.class, CryptoUtil.class})
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+public class PaymentGuaranteeDatabaseTest {
+
+    private final HospitalReservationRepository repository;
+
+    public PaymentGuaranteeDatabaseTest(
+            @Autowired HospitalReservationRepository repository) {
+        this.repository = repository;
+    }
+
+    @Test
+    @Rollback(value = true)
+    @DisplayName("지불보증 조회 테스트")
+    void selectHospitalReservation() {
+
+        //given
+        Long reserveId = 13L;
+
+        //when
+        HospitalReservation hospitalReservation = repository.findById(reserveId).orElseThrow(() -> new BusinessException(ResponseMessage.NOT_FOUND.getMessage()));
+
+        //then
+        Assertions.assertEquals(hospitalReservation.getId(), reserveId);
+    }
+}
