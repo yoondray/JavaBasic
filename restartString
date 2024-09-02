@@ -1,1 +1,10 @@
-commit
+//Map<String, String> 을 활용해서 사용하기위한 필드에 직접 put 함
+    public Map<String, String> splitEmail(String email) {
+        String[] emailSplit = email.split("@");
+
+        Map<String, String> result = new HashMap<>();
+        result.put("email1", emailSplit[0]);
+        result.put("email2", emailSplit[1]);
+
+        return result;
+    }
