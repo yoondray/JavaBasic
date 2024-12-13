@@ -1,0 +1,19 @@
+import org.assertj.core.api.Assertions;
+import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.web.client.RestTemplate;
+
+@RestController
+public class HelloControllerTest {
+    private final HelloService helloService;
+
+    public HelloController(HelloService helloService) { this.helloService = helloService; }
+
+    @GetMapping("/hello")
+    public String hello(String name) {
+       return helloService.sayHello(Objects.requireNonNull(name));
+  
+    }
+}
