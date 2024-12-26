@@ -87,6 +87,8 @@ public class ConditionalTest {
     static class FalseCondition implements Condition {
         @Override
         public boolean matches(ConditionContext context, AnnotatedTypeMetadata metadata) {
+            metadata.getAnnotationAttributes(BooleanCondition.class.getName());
+            Boolean value = (Boolean) annotationAttributes.get("value");
             return true;
         }
     }
