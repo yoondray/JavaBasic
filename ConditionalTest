@@ -1,0 +1,95 @@
+@RestController
+@RequestMapping("/api/marketing")
+@RequiredArgsConstructor
+public class ConditionalTest {
+
+    @Test
+    void conditional() {
+        //TRUE
+        ApplicationContextrunner contextRunner = new ApplicationContextRunner();
+        contextRunner.withUserConfiguration(Config1.class)
+                .run(context -> {
+                    Assertions.assertThat(context).hasSingleBean(MyBean.class);
+                    Assertions.assertThat(context).hasSingleBean(Config1.class);
+                });
+
+
+        AnnotationConfigApplicationContext context1 = new AnnotationConfigApplicationContext();
+        context1.register(Config1.class);
+        context1.refresh();
+
+        MyBean bean1 = context1.getBean(MyBean.class);
+
+        //FALSE
+        new ApplicationContextRunner().withUserConfiguration(Config2.class)
+                .run(context -> {
+                    Assertions.assertThat(context).doesNotHaveBean(MyBean.class);
+                    Assertions.assertThat(context).doesNotHaveBean(Config2.class);
+                });
+
+        AnnotationConfigApplicationContext context2 = new AnnotationConfigApplicationContext();
+        context2.register(Config1.class);
+        context2.refresh();
+
+        MyBean bean2 = context2.getBean(MyBean.class);
+
+    }
+
+    // TRUE 그리고 FALSE 둘다 가능하게
+    @Retention(RetentionPolicy.RUNTIME)
+    @Target(ElementType.TYPE)
+    @Conditional({BooleanCondition.class})
+    @interface BooleanConditional {
+        boolean value();
+    }
+
+    @Retention(RetentionPolicy.RUNTIME)
+    @Target(ElementType.TYPE)
+    @Conditional({TrueCondition.class})
+    @interface TrueConditional {}
+
+    @Configuration
+    @BooleanConditional(true)
+//    @TrueConditional
+//    @Conditional({TrueCondition.class})
+    class Config1 {
+        @Bean
+        MyBean myBean() {
+            return new MyBean();
+        }
+    }
+
+    @Retention(RetentionPolicy.RUNTIME)
+    @Target(ElementType.TYPE)
+    @Conditional({FalseCondition.class})
+    @interface FalseConditional {}
+
+    @Configuration
+    @BooleanConditional(false)
+//    @FalseConditional
+//    @Conditional({FalseCondition.class})
+    static class Config2 {
+        @Bean
+        MyBean myBean() {
+            return new MyBean();
+        }
+    }
+
+    static class MyBean {}
+
+    static class TrueCondition implements Condition {
+        @Override
+        public boolean matches(ConditionContext context, AnnotatedTypeMetadata metadata) {
+            return true;
+        }
+    }
+
+    static class FalseCondition implements Condition {
+        @Override
+        public boolean matches(ConditionContext context, AnnotatedTypeMetadata metadata) {
+            return true;
+        }
+    }
+
+
+}
