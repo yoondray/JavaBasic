@@ -1,0 +1,8 @@
+@Getter
+@Setter
+public class ServerProperties {
+    private String contextPath;
+
+    private int port;
+
+}
