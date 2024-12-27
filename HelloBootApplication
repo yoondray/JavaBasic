@@ -12,6 +12,7 @@ public class HelloBootApplication {
 //            }    
 //        };
 
+// MY_NAME=EnvironmentVariable
           return args -> {
                 String name = env.getProperty("my.name");
                 System.out.println("my.name: " + name); // (결과) null값
