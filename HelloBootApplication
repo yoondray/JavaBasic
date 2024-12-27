@@ -1,12 +1,30 @@
 @Configuration
 @ComponentScan
 public class HelloBootApplication {
+
     @Bean
+    ApplicationRunner applicationRunner(Environment env) {
+// lamda식으로 변경
+//        return new ApplicationRunner() {
+//            @Override
+//            public void run(ApplicationArguments args) throws Exception {
+//
+//            }    
+//        };
+
+          return args -> {
+                String name = env.getProperty("my.name");
+                System.out.println("my.name: " + name); // (결과) null값
+
+          }
+    }
+    
+    // @Bean
     public ServletWebServerFactory servletWebServerFactory() {
         return new TomcatServletWebServerFactory();
     }
 
-    @Bean
+    // @Bean
     public DispactcherServlet dispatcherServlet() {
         return new DispatcherServlet();
     }
