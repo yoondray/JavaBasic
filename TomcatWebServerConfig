@@ -25,3 +25,4 @@ public class TomcatWebServerConfig {
         //localhost:8080/app/hello?name= 으로 호출
         return factory;
     }
+}
