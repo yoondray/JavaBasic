@@ -1,0 +1,13 @@
+import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
+import org.springframework.context.annotation.Bean;
+
+@MyAutoConfiguration
+@ConditionalMyOnClass("org.eclipse.jetty.server.Server")
+public class JettyWebServerConfig {
+    @Bean("jettyWebServerFactory")
+    // @Conditional이 bean 레벨에 있으면 - 이미 동일한 타입이 존재하는가? 존재하지 않으면 bean 으로 등록해라.
+    @ConditionalOnMissingBean
+    public ServletWebServerFactory servletWebServerFactory() {
+        return new TomcatServletWebServerFactory();
+    }
+}
