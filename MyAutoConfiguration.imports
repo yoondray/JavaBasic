@@ -1,4 +1,5 @@
-config.autoconfig.PropertyPlaceholderConfig
+config.autoconfig.ServerPropertiesConfig
+#config.autoconfig.PropertyPlaceholderConfig
 config.autoconfig.TomcatWebServerConfig
 config.autoconfig.JettyWebServerConfig
 #config.autoconfig.DispathcerServletConfig
