@@ -10,7 +10,13 @@ public class TomcatWebServerConfig {
     @Bean("tomcatWebServerFactory")
     // @Conditional이 bean 레벨에 있으면 - 이미 동일한 타입이 존재하는가? 존재하지 않으면 bean 으로 등록해라.
     @ConditionalOnMissingBean
-    public ServletWebServerFactory servletWebServerFactory() {
-        return new TomcatServletWebServerFactory();
+    public ServletWebServerFactory servletWebServerFactory(Environment env) {
+        // ServerFactory - 컨테이너 서버를 띄우기 전에 다양한 설정함
+//        return new TomcatServletWebServerFactory();
+        TomcatServletWebServerFactory factory = new TomcatServletWebServerFactory();
+//        factory.setContextPath("/app");
+        factory.setContextPath(env.getProperty("contextPath"));
+        //localhost:8080/app/hello?name= 으로 호출
+        return factory;
     }
 }
