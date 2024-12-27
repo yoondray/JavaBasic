@@ -1,7 +1,7 @@
 @Getter
 @Setter
 @Component
-@MyConfigurationProperties
+@MyConfigurationProperties(prefix = "server")
 public class ServerProperties {
     private String contextPath;
 
