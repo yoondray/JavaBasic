@@ -29,4 +29,14 @@ public class TomcatWebServerConfig {
         //localhost:8080/app/hello?name= 으로 호출
         return factory;
     }
+
+    @Bean
+    public ServerProperties serverProperties(Environment environment) {
+        ServerProperties serverProperties = new ServerProperties();
+
+        serverProperties.setContextPath(environment.getProperty("contextPath"));
+        serverProperties.setPort(Integer.parseInt(environment.getProperty("port")))
+
+        return serverProperties;
+    }
 }
