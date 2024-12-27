@@ -1,0 +1,15 @@
+package com.lulumedic.api.marketing.service.notice;
+
+import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
+import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
+import org.springframework.context.annotation.Bean;
+
+@MyAutoConfiguration
+@ConditionalMyOnClass("org.apache.catalina.startup.Tomcat")
+public class PropertyPlaceholderConfig {
+    @Bean
+    PropertySourcePlaceholderConfigurer propertyPlaceholderConfigurer() {
+        return new PropertySourcePlaceholderConfigurer();
+    }
+
+}
