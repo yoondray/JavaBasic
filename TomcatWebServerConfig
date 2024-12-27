@@ -1,0 +1,16 @@
+package com.lulumedic.api.marketing.service.notice;
+
+import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Conditional;
+
+@MyAutoConfiguration
+@ConditionalMyOnClass("org.apache.catalina.startup.Tomcat")
+public class TomcatWebServerConfig {
+    @Bean("tomcatWebServerFactory")
+    // @Conditional이 bean 레벨에 있으면 - 이미 동일한 타입이 존재하는가? 존재하지 않으면 bean 으로 등록해라.
+    @ConditionalOnMissingBean
+    public ServletWebServerFactory servletWebServerFactory() {
+        return new TomcatServletWebServerFactory();
+    }
+}
