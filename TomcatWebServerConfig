@@ -7,11 +7,11 @@ import org.springframework.context.annotation.Conditional;
 @MyAutoConfiguration
 @ConditionalMyOnClass("org.apache.catalina.startup.Tomcat")
 public class TomcatWebServerConfig {
-    @Value("${contextxPath:}")
-    String contextPath;
+//    @Value("${contextxPath:}")
+//    String contextPath;
 
-    @Value("${port:8080}")
-    int port;
+//    @Value("${port:8080}")
+//    int port;
 
     @Bean("tomcatWebServerFactory")
     // @Conditional이 bean 레벨에 있으면 - 이미 동일한 타입이 존재하는가? 존재하지 않으면 bean 으로 등록해라.
