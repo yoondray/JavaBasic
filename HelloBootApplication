@@ -2,8 +2,8 @@
 @ComponentScan
 public class HelloBootApplication {
 
-    @Bean
-    ApplicationRunner applicationRunner(Environment env) {
+//    @Bean
+//    ApplicationRunner applicationRunner(Environment env) {
 // lamda식으로 변경
 //        return new ApplicationRunner() {
 //            @Override
@@ -13,22 +13,22 @@ public class HelloBootApplication {
 //        };
 
 // MY_NAME=EnvironmentVariable
-          return args -> {
-                String name = env.getProperty("my.name");
-                System.out.println("my.name: " + name); // (결과) null값
+//          return args -> {
+//                String name = env.getProperty("my.name");
+//                System.out.println("my.name: " + name); // (결과) null값
 
-          }
-    }
+//          }
+//    }
     
     // @Bean
-    public ServletWebServerFactory servletWebServerFactory() {
-        return new TomcatServletWebServerFactory();
-    }
+//    public ServletWebServerFactory servletWebServerFactory() {
+//        return new TomcatServletWebServerFactory();
+//    }
 
     // @Bean
-    public DispactcherServlet dispatcherServlet() {
-        return new DispatcherServlet();
-    }
+//    public DispactcherServlet dispatcherServlet() {
+//        return new DispatcherServlet();
+//    }
 
     public static void main(String[] args) {
         SpringApplication.run(HelloBootApplication.class, args);
