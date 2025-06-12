@@ -1,6 +1,4 @@
-package src.main.java;
-
-public class While_1 {
+public class While_2 {
 
     public static void main(String[] args) {
 
